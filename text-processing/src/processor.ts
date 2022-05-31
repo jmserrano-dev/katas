@@ -26,13 +26,12 @@ export class Processor {
   }
 
   private splitIntoWords(text: string): Word[] {
-    return text.split(" ").filter(Boolean);
+    return text.toLocaleLowerCase().split(" ").filter(Boolean);
   }
 
   private getWordDictionary(words: Word[]): WordDictionary {
     return words.reduce((previous, current) => {
-      const word = current.toLowerCase();
-      previous[word] = (previous[word] || 0) + 1;
+      previous[current] = (previous[current] || 0) + 1;
       return previous;
     }, {});
   }
