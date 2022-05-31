@@ -55,4 +55,24 @@ describe("Processor", () => {
     expect(processor.getTop10()).toEqual(["hello", "bye"]);
     expect(processor.getTotalWords()).toEqual(5);
   });
+
+  it("should analysis a complex text", () => {
+    processor.analyse(`Hello, this is an example for you to practice. You should grab
+    this text and make it as your test case.`);
+
+    expect(processor.getTop10()).toEqual([
+      "this",
+      "you",
+      "hello",
+      "is",
+      "an",
+      "example",
+      "for",
+      "to",
+      "practice",
+      "should",
+    ]);
+
+    expect(processor.getTotalWords()).toEqual(21);
+  });
 });

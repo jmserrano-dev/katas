@@ -26,7 +26,13 @@ export class Processor {
   }
 
   private splitIntoWords(text: string): Word[] {
-    return text.toLocaleLowerCase().split(" ").filter(Boolean);
+    return text
+      .toLocaleLowerCase()
+      .replace(/,/, "")
+      .replace(/\./, "")
+      .replace(/\n/, "")
+      .split(" ")
+      .filter(Boolean);
   }
 
   private getWordDictionary(words: Word[]): WordDictionary {
