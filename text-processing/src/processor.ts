@@ -31,7 +31,8 @@ export class Processor {
 
   private getWordDictionary(words: Word[]): WordDictionary {
     return words.reduce((previous, current) => {
-      previous[current] = (previous[current] || 0) + 1;
+      const word = current.toLowerCase();
+      previous[word] = (previous[word] || 0) + 1;
       return previous;
     }, {});
   }
