@@ -1,0 +1,65 @@
+{
+  "name": "typescript-jest-boilerplate",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Charles Ahmadzadeh <superzadeh@outlook.com>",
+  "scripts": {
+    "check-types": "yarn compile:ts --noEmit",
+    "test": "cross-env NODE_ENV=test jest",
+    "test:cover": "yarn test --coverage",
+    "test:changed": "yarn test --watch",
+    "test:ensure-failure": "bash ./ensure-a-failing-test.sh",
+    "test:update": "yarn test -u",
+    "test:watch": "yarn test --watchAll",
+    "lint": "yarn lint:ts",
+    "lint:ts": "tslint src/**/*.ts",
+    "compile": "yarn lint && yarn compile:ts",
+    "compile:watch": "yarn compile:ts -w",
+    "compile:ts": "tsc --project tsconfig.json"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/jest": "27.0.3",
+    "@types/node": "16.11.10",
+    "babel-core": "6.26.3",
+    "babel-jest": "27.3.1",
+    "cross-env": "7.0.3",
+    "jest": "27.3.1",
+    "ts-jest": "27.0.7",
+    "tslint": "6.1.3",
+    "tslint-config-prettier": "1.18.0",
+    "ts-mockito": "^2.6.1",
+    "typescript": "3.7.7"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/test"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "html"
+    ],
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    },
+    "testRegex": "(\\.|/)(test)\\.(js|tsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json",
+      "node"
+    ]
+  },
+  "standard": {
+    "env": [
+      "node",
+      "jest"
+    ],
+    "globals": [
+      "expect"
+    ]
+  }
+}
