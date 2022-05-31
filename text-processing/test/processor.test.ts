@@ -34,4 +34,18 @@ describe("Processor", () => {
     expect(processor.getTop10()).toEqual(["I"]);
     expect(processor.getTotalWords()).toEqual(2);
   });
+
+  it("should analysis a text with multiple repeats", () => {
+    processor.analyse("Hello Bye Bye Hello Hello");
+
+    expect(processor.getTop10()).toEqual(["Hello", "Bye"]);
+    expect(processor.getTotalWords()).toEqual(5);
+  });
+
+  it("should analysis a text with multiple repearts unsorted", () => {
+    processor.analyse("Bye Bye Hello Hello Hello");
+
+    expect(processor.getTop10()).toEqual(["Hello", "Bye"]);
+    expect(processor.getTotalWords()).toEqual(5);
+  });
 });
