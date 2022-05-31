@@ -1,9 +1,13 @@
 import { Processor } from "../src/Processor";
 
 describe("Processor", () => {
-  it("should analysis a text empty", () => {
-    const processor = new Processor();
+  let processor: Processor;
 
+  beforeEach(() => {
+    processor = new Processor();
+  });
+
+  it("should analysis a text empty", () => {
     processor.analyse("");
 
     expect(processor.getTop10()).toEqual([]);
@@ -11,8 +15,6 @@ describe("Processor", () => {
   });
 
   it("should analysis a text with one word", () => {
-    const processor = new Processor();
-
     processor.analyse("I");
 
     expect(processor.getTop10()).toEqual(["I"]);
