@@ -1,20 +1,24 @@
 export class Processor {
-  private top10: string[] = [];
+  private distinctWords: { [key: string]: number } = {};
   private totalWords: number = 0;
 
   public analyse(text: string) {
     const words = this.splitIntoWords(text);
 
     const distinctWords = words.reduce((previous, current) => {
-      return previous.includes(current) ? previous : [...previous, current];
-    }, []);
+      previous[current] = (previous[current] || 0) + 1;
+      return previous;
+    }, {});
 
-    this.top10 = [...distinctWords];
     this.totalWords = words.length;
+    this.distinctWords = distinctWords;
   }
 
   public getTop10() {
-    return this.top10;
+    return Object.entries(this.distinctWords)
+      .sort((x, y) => y[1] - x[1])
+      .slice(0, 10)
+      .map((entry) => entry[0]);
   }
 
   public getTotalWords() {

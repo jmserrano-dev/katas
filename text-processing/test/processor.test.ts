@@ -28,21 +28,21 @@ describe("Processor", () => {
     expect(processor.getTotalWords()).toEqual(2);
   });
 
-  it("should analysis a text with two repeat words", () => {
+  it("should analysis a text with two repeated words", () => {
     processor.analyse("I I");
 
     expect(processor.getTop10()).toEqual(["I"]);
     expect(processor.getTotalWords()).toEqual(2);
   });
 
-  it("should analysis a text with multiple repeats", () => {
+  it("should analysis a text with multiple repetitions", () => {
     processor.analyse("Hello Bye Bye Hello Hello");
 
     expect(processor.getTop10()).toEqual(["Hello", "Bye"]);
     expect(processor.getTotalWords()).toEqual(5);
   });
 
-  it("should analysis a text with multiple repearts unsorted", () => {
+  it("should analysis a text with multiple repetitions unsorted", () => {
     processor.analyse("Bye Bye Hello Hello Hello");
 
     expect(processor.getTop10()).toEqual(["Hello", "Bye"]);
