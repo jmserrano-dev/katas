@@ -48,4 +48,11 @@ describe("Processor", () => {
     expect(processor.getTop10()).toEqual(["Hello", "Bye"]);
     expect(processor.getTotalWords()).toEqual(5);
   });
+
+  it("should analysis a text in case insensitive", () => {
+    processor.analyse("bye ByE Hello hEllo heLLo");
+
+    expect(processor.getTop10()).toEqual(["hello", "bye"]);
+    expect(processor.getTotalWords()).toEqual(5);
+  });
 });
