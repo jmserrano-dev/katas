@@ -1,3 +1,5 @@
+import * as String from "./shared/String.utils";
+
 type Word = string;
 
 type WordDictionary = { [key: Word]: number };
@@ -26,13 +28,9 @@ export class Processor {
   }
 
   private splitIntoWords(text: string): Word[] {
-    return text
-      .toLocaleLowerCase()
-      .replace(/,/g, "")
-      .replace(/\./g, "")
-      .replace(/\n/g, "")
-      .split(" ")
-      .filter(Boolean);
+    const sanitizedText = String.sanitize(text.toLocaleLowerCase());
+    const words = String.splitByWhiteSpace(sanitizedText);
+    return String.cleanEmptyStrings(words);
   }
 
   private getWordDictionary(words: Word[]): WordDictionary {
