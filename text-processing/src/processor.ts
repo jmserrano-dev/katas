@@ -28,9 +28,9 @@ export class Processor {
   private splitIntoWords(text: string): Word[] {
     return text
       .toLocaleLowerCase()
-      .replace(/,/, "")
-      .replace(/\./, "")
-      .replace(/\n/, "")
+      .replace(/,/g, "")
+      .replace(/\./g, "")
+      .replace(/\n/g, "")
       .split(" ")
       .filter(Boolean);
   }
