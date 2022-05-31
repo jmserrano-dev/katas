@@ -20,4 +20,11 @@ describe("Processor", () => {
     expect(processor.getTop10()).toEqual(["I"]);
     expect(processor.getTotalWords()).toEqual(1);
   });
+
+  it("should analysis a text with two words", () => {
+    processor.analyse("I love");
+
+    expect(processor.getTop10()).toEqual(["I", "love"]);
+    expect(processor.getTotalWords()).toEqual(2);
+  });
 });
