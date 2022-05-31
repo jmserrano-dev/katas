@@ -27,4 +27,11 @@ describe("Processor", () => {
     expect(processor.getTop10()).toEqual(["I", "love"]);
     expect(processor.getTotalWords()).toEqual(2);
   });
+
+  it("should analysis a text with two repeat words", () => {
+    processor.analyse("I I");
+
+    expect(processor.getTop10()).toEqual(["I"]);
+    expect(processor.getTotalWords()).toEqual(2);
+  });
 });
