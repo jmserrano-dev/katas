@@ -56,6 +56,14 @@ describe("Processor", () => {
     expect(processor.getTotalWords()).toEqual(5);
   });
 
+  it("should sanitize ',' '.' and '\n'", () => {
+    processor.analyse(`. ,
+    . , .`);
+
+    expect(processor.getTop10()).toEqual([]);
+    expect(processor.getTotalWords()).toEqual(0);
+  });
+
   it("should analysis a complex text", () => {
     processor.analyse(`Hello, this is an example for you to practice. You should grab
     this text and make it as your test case.`);
