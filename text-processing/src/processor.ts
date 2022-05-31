@@ -1,11 +1,22 @@
 export class Processor {
-  public analyse(text: string) {}
+  private top10: string[] = [];
+  private totalWords: number = 0;
+
+  public analyse(text: string) {
+    if (text === "") {
+      this.top10 = [];
+      this.totalWords = 0;
+    } else {
+      this.top10 = [text];
+      this.totalWords = 1;
+    }
+  }
 
   public getTop10() {
-    return [];
+    return this.top10;
   }
 
   public getTotalWords() {
-    return 0;
+    return this.totalWords;
   }
 }
