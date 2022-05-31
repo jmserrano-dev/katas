@@ -3,7 +3,7 @@ export class Processor {
   private totalWords: number = 0;
 
   public analyse(text: string) {
-    const words = text.split(" ").filter(Boolean);
+    const words = this.splitIntoWords(text);
 
     const distinctWords = words.reduce((previous, current) => {
       return previous.includes(current) ? previous : [...previous, current];
@@ -19,5 +19,9 @@ export class Processor {
 
   public getTotalWords() {
     return this.totalWords;
+  }
+
+  private splitIntoWords(text: string) {
+    return text.split(" ").filter(Boolean);
   }
 }
