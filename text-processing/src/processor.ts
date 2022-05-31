@@ -5,7 +5,11 @@ export class Processor {
   public analyse(text: string) {
     const words = text.split(" ").filter(Boolean);
 
-    this.top10 = [...words];
+    const distinctWords = words.reduce((previous, current) => {
+      return previous.includes(current) ? previous : [...previous, current];
+    }, []);
+
+    this.top10 = [...distinctWords];
     this.totalWords = words.length;
   }
 
