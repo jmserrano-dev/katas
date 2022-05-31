@@ -3,13 +3,10 @@ export class Processor {
   private totalWords: number = 0;
 
   public analyse(text: string) {
-    if (text === "") {
-      this.top10 = [];
-      this.totalWords = 0;
-    } else {
-      this.top10 = [text];
-      this.totalWords = 1;
-    }
+    const words = text.split(" ").filter(Boolean);
+
+    this.top10 = [...words];
+    this.totalWords = words.length;
   }
 
   public getTop10() {
