@@ -1,10 +1,12 @@
-import { Processor } from "../src/processor";
+import { Processor } from "../src/Processor";
 
 describe("Processor", () => {
-  it("should analysis a text empty", () => {
-    const { top10, totalWords } = new Processor().analysis("");
+  test("should analysis a text empty", () => {
+    const processor = new Processor();
 
-    expect(top10).toEqual([]);
-    expect(totalWords).toEqual(0);
+    processor.analyse("");
+
+    expect(processor.getTop10()).toEqual([]);
+    expect(processor.getTotalWords()).toEqual(0);
   });
 });
