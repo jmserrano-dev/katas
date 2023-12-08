@@ -1,8 +1,7 @@
 function drawGift(size: number, symbol: string): string {
-  if (size === 1) return "#";
+  if (size === 1) return "#\n";
 
-  const top: string[] = [];
-  const bottom: string[] = [];
+  const parts: string[] = [];
   const middle = `${"#".repeat(size)}${symbol.repeat(size - 2)}#`;
 
   for (let index = 0; index < size - 1; index++) {
@@ -11,11 +10,13 @@ function drawGift(size: number, symbol: string): string {
         ? "#".repeat(size)
         : `#${symbol.repeat(size - 2)}#${symbol.repeat(index - 1)}#`;
 
-    top.push(stuffed.padStart(middle.length, " "));
-    bottom.push(stuffed);
+    parts.push(stuffed);
   }
 
-  return [...top, middle, ...bottom.reverse()].join("\n");
+  const top = parts.map((x) => x.padStart(middle.length, " "));
+  const bottom = parts.reverse();
+
+  return [...top, middle, ...bottom].join("\n") + "\n";
 }
 
 drawGift(1, "^"); //?
